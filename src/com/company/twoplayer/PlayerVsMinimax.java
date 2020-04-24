@@ -28,7 +28,7 @@ public class PlayerVsMinimax {
             state.writeState();
             System.out.println(state.heuristics());
             if(state.getPlayer() == 1) {
-                operator = Minimax.minimaxLepes(state, 3);
+                operator = Minimax.minimaxLepes(state, 2);
             }
             else if(state.getPlayer() == 2){
                 System.out.println("Adja meg x,y koordinatakat: ");
@@ -39,6 +39,6 @@ public class PlayerVsMinimax {
 
             state = operator.lerak(state);
         }
-        System.out.println("Player "+state.getPlayer()+" nyert!");
+        System.out.println("Player "+(state.getPlayer()==1?2:1)+" nyert!");
     }
 }

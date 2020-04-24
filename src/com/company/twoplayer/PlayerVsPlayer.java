@@ -33,6 +33,6 @@ public class PlayerVsPlayer {
 
             state = operator.lerak(state);
         }
-        System.out.println("Player "+state.getPlayer()+" nyert!");
+        System.out.println("Player "+(state.getPlayer()==1?2:1)+" nyert!");
     }
 }
