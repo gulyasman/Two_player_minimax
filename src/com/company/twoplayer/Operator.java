@@ -4,7 +4,7 @@ public class Operator {
     private int i, j;
     private int player;
 
-    public Operator(){
+    public Operator() {
 
     }
 
@@ -19,17 +19,16 @@ public class Operator {
     }
 
     public State lerak(State state) {
-        State resultState = new State(state.getA(),player);
+        State resultState = new State(state.getA(), player);
 
         resultState.setAbyIndex(i, j, player);
-        if(player == 1){
+        if (state.getPlayer() == player) {
             resultState.setPlayer(2);
-        }else{
+        } else {
             resultState.setPlayer(1);
         }
 
         return resultState;
-
     }
 
     @Override

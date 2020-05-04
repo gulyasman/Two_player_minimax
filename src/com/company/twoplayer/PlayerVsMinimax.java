@@ -4,41 +4,41 @@ import java.util.Scanner;
 
 public class PlayerVsMinimax {
     public static int[][] a = {
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0},
+            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+            {0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0},
+            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+            {0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0},
+            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+            {0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0},
+            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+            {0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0},
+            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+            {0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0}
     };
 
     public static Scanner scanner = new Scanner(System.in);
 
-    public static void play(){
+    public static void play() {
 
-        int player = 1,x,y;
-        State state = new State(a,player);
+        int player = 1, x, y;
+        State state = new State(a, player);
 
-        while (state.celState() != 1 && state.celState() != 2){
+        while (state.celState() != 1 && state.celState() != 2) {
             Operator operator = new Operator();
             state.writeState();
             System.out.println(state.heuristics());
-            if(state.getPlayer() == 1) {
-                operator = Minimax.minimaxLepes(state, 2);
-            }
-            else if(state.getPlayer() == 2){
+            if (state.getPlayer() == 1) {
+                operator = Minimax.minimaxLepes(state, 2, 1);
+            } else if (state.getPlayer() == 2) {
                 System.out.println("Adja meg x,y koordinatakat: ");
-                x = scanner.nextInt()-1;
-                y = scanner.nextInt()-1;
-                operator = new Operator(x,y,state.getPlayer());
+                x = scanner.nextInt() - 1;
+                y = scanner.nextInt() - 1;
+                operator = new Operator(x, y, state.getPlayer());
             }
 
             state = operator.lerak(state);
         }
-        System.out.println("Player "+(state.getPlayer()==1?2:1)+" nyert!");
+        System.out.println("Player " + (state.getPlayer() == 1 ? 2 : 1) + " nyert!");
     }
 }
